@@ -61,13 +61,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            Get In Touch
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900">
+            Get In <span className="text-teal-600">Touch</span>
           </h2>
-          <p className="mt-4 text-xl text-gray-600">
+          <div className="w-32 h-1 bg-teal-600 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Let's discuss your next project or opportunity
           </p>
         </div>
@@ -120,7 +121,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
@@ -136,7 +137,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors shadow-sm"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 shadow-sm text-gray-900 bg-white"
                   placeholder="Your full name"
                 />
               </div>
@@ -155,7 +156,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors shadow-sm"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 shadow-sm text-gray-900 bg-white"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -174,7 +175,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors shadow-sm resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 shadow-sm resize-none text-gray-900 bg-white"
                   placeholder="Tell me about your project or just say hello..."
                 />
               </div>
@@ -184,31 +185,32 @@ const Contact = () => {
                 <div
                   className={`p-4 rounded-lg ${
                     submitStatus.type === "success"
-                      ? "bg-green-50 text-green-800 border border-green-200"
-                      : "bg-red-50 text-red-800 border border-red-200"
+                      ? "bg-green-50 border-green-200"
+                      : "bg-red-50 border-red-200"
                   }`}
-                  style={{
-                    color: submitStatus.type === "success" ? "#22c55e" : "#ef4444"
-                  }}
                 >
-                  {submitStatus.message}
+                  <p className={`font-medium ${
+                    submitStatus.type === "success" ? "text-green-800" : "text-red-800"
+                  }`}>
+                    {submitStatus.message}
+                  </p>
                 </div>
               )}
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-teal-600 text-white py-3 px-6 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors font-medium flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+                className="w-full bg-teal-600 text-white py-4 px-6 rounded-xl hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-all duration-300 font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 style={{ backgroundColor: "#14b8a6" }}
               >
                 {isSubmitting ? (
                   <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                     <span>Sending...</span>
                   </>
                 ) : (
                   <>
-                    <Send className="h-4 w-4" />
+                    <Send className="h-5 w-5" />
                     <span>Send Message</span>
                   </>
                 )}
