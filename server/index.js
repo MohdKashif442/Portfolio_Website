@@ -22,6 +22,14 @@ const transporter = nodemailer.createTransport({
 });
 
 // Contact form endpoint
+// Serve static files from the 'dist' directory
+const buildPath = path.join(__dirname, '../dist');
+app.use(express.static(buildPath));
+
+// Handle all other requests by serving the index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, message } = req.body;
